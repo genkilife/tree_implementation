@@ -5,7 +5,7 @@
 #include "test_util.h"
 
 struct BinaryNode{
-	BinaryNode* left, right;
+	BinaryNode *left, *right;
 	ValType data;
 };
 
