@@ -18,11 +18,11 @@ RC BinaryTree::search(KeyType key){
 	return -1;
 }
 
-RC BinaryTree::printHashMethod(){
+RC BinaryTree::printTreeMethod(){
 	std::cout<<"Binary tree class is used!"<<std::endl;
 	return SUCCESS;
 }
 
-bool BinaryTree::isEmptyHash(){
+bool BinaryTree::isEmptyTree(){
 	return true;
 }
