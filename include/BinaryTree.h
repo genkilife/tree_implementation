@@ -17,6 +17,7 @@ class BinaryTree: public BasicTree{
 		RC search(KeyType);
 		RC printTreeMethod();
 		bool isEmptyTree();
+		void freeTree(BinaryNode*);
 	private:
 		BinaryNode* root;
 		unsigned int treeSize;
