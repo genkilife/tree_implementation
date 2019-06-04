@@ -4,9 +4,14 @@
 #include <iostream>
 #include "test_util.h"
 
-struct BinaryNode{
-	BinaryNode *left, *right;
-	ValType data;
+class BinaryNode(){
+	public:
+		BinaryNode();
+		BinaryNode(ValType);
+		~BinaryNode();
+	private:
+		BinaryNode *left, *right;
+		ValType data;
 };
 
 #endif
