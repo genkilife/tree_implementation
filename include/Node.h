@@ -1,5 +1,5 @@
-#ifndef _BASIC_NODE_H_
-#define _BASIC_NODE_H_
+#ifndef _NODE_H_
+#define _NODE_H_
 
 #include <iostream>
 #include "test_util.h"
