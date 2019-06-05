@@ -6,7 +6,7 @@ typedef int RC;
 typedef unsigned int KeyType;
 typedef unsigned int ValType;
 
-#define MODPRIME 32749
+#define MODPRIME 131072
 
 // for non-return usage
 #define SUCCESS 0
