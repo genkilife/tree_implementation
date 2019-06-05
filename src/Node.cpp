@@ -2,10 +2,13 @@
 
 BinaryNode::BinaryNode(){
 	left = right = NULL;
+	height=0;
 }
 
 BinaryNode::BinaryNode(ValType idata){
+	left = right = NULL;
 	data = idata;
+	height=0;
 }
 
 BinaryNode::~BinaryNode(){

@@ -9,8 +9,10 @@ class BinaryNode{
 		BinaryNode();
 		BinaryNode(ValType);
 		~BinaryNode();
+
 		BinaryNode *left, *right;
 		ValType data;
+		int height;
 };
 
 #endif
