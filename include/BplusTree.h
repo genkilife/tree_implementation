@@ -22,6 +22,6 @@ class BplusTree: public BasicTree{
 		void freeTree(BplusNode*);
 	protected:
 		BplusNode* root;
-		int maxChildSize;
+		unsigned int maxChildSize;
 };
 #endif

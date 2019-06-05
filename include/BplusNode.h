@@ -9,22 +9,26 @@ class BplusNode{
 	public:
 		BplusNode();
 		BplusNode(unsigned int maxDataSize);
-
 		~BplusNode();
 
-		std::vector< ValType > datas;
-		std::vector< BplusNode* > childPtrs;
 
 		RC findData(ValType, BplusNode* &);
-		int getDatasSize();
+		unsigned int getDatasSize();
 		int getChildPtrsSize();
 
 		ValType getData(unsigned int);
+		BplusNode* getChild(unsigned int);
 
+		RC resizeNode(unsigned int);
+
+		RC newChildPtr(unsigned int);
 		RC setChildPtr(unsigned int, BplusNode*);
-
+		BplusNode* getChildPtr(unsigned int);
 		RC insertData(ValType);
 
+	protected:
+		std::vector< ValType > datas;
+		std::vector< BplusNode* > childPtrs;
 		unsigned int maxDataSize;
 };
 

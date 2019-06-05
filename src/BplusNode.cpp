@@ -60,7 +60,7 @@ RC BplusNode::insertData(ValType data){
 }
 
 
-int BplusNode::getDatasSize(){
+unsigned int BplusNode::getDatasSize(){
 	return datas.size();
 }
 
@@ -72,8 +72,27 @@ ValType BplusNode::getData(unsigned int index){
 	return datas[index];
 }
 
+BplusNode* BplusNode::getChild(unsigned int index){
+	return childPtrs[index];
+}
+
 RC BplusNode::setChildPtr(unsigned int index, BplusNode* nodePtr){
-	childPtr[index] = nodePtr;
+	childPtrs[index] = nodePtr;
+	return SUCCESS;
+}
+
+BplusNode* BplusNode::getChildPtr(unsigned int index){
+	return childPtrs[index];
+}
+
+RC BplusNode::newChildPtr(unsigned int index){
+	childPtrs[index] = new BplusNode(maxDataSize);
+	return SUCCESS;
+}
+
+RC BplusNode::resizeNode(unsigned int size){
+	datas.resize(size);
+	childPtrs.resize(size+1);
 	return SUCCESS;
 }
 
