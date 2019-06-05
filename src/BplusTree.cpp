@@ -45,7 +45,7 @@ RC BplusTree::insert(ValType data){
 	}
 
 	// iter is at leaf page
-	if(iter->insertData(data) != SUCCESS){
+	if(iter->insertData(data) >= maxChildSize){
 		return -1;
 	}
 
@@ -56,15 +56,13 @@ RC BplusTree::insert(ValType data){
 
 	// split nodes and move upwards
 	while(iter->getDatasSize() == maxChildSize){
+		// split node and promte
+		// pick up the pivot data
+		unsigned int pivotIndex = maxChildSize/2;
+		ValType pivotData = iter->getData(pivotIndex);
 
 		// this is root
 		if(visitedNodes.size()==0){
-			// split node and promte
-			// pick up the pivot data
-			unsigned int pivotIndex = maxChildSize/2;
-			ValType pivotData = iter->getData(pivotIndex);
-
-
 			BplusNode* oldRoot = root;
 			// put pick up data onto the node
 			root = new BplusNode(maxChildSize);
@@ -86,10 +84,28 @@ RC BplusTree::insert(ValType data){
 
 		} else{
 			// push key into upper layer
+			BplusNode* parent = visitedNodes.back();
 
+			unsigned int parIndex = parent->insertData(pivotData);
+			if(parIndex >= maxChildSize){
+				return -1;
+			}
 
+			parent->newChildPtr(parIndex+1);
+			BplusNode* sibling = parent->getChildPtr(parIndex+1);
+
+			for(unsigned int i=pivotIndex+1; i < maxChildSize; i++){
+				sibling->insertData(iter->getData(i));
+			}
+			for(unsigned int i=pivotIndex+1; i <= maxChildSize; i++){
+				sibling->setChildPtr(i-pivotIndex-1, iter->getChild(i));
+			}
+
+			// recude left node size
+			iter->resizeNode(pivotIndex);
 		}
 
+		// TODO: check active later
 		iter = visitedNodes.back();
 		visitedNodes.pop_back();
 	}

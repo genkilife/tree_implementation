@@ -35,9 +35,9 @@ RC BplusNode::findData(ValType data, BplusNode* & childPtr){
 	return -1;
 }
 
-RC BplusNode::insertData(ValType data){
+unsigned int BplusNode::insertData(ValType data){
 	if(datas.size() == maxDataSize){
-		return -1;
+		return datas.size();
 	}
 
 	if(datas.size() == 0){
@@ -54,9 +54,9 @@ RC BplusNode::insertData(ValType data){
 	}
 
 	datas.insert(datas.begin()+i, data);
-	childPtrs.insert(childPTrs.begin()+i+1, NULL);
+	childPtrs.insert(childPtrs.begin()+i+1, NULL);
 
-	return SUCCESS;
+	return i;
 }
 
 
