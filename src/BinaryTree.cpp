@@ -22,8 +22,8 @@ RC BinaryTree::insert(ValType data){
 
 	// if it is empty tree
 	if(iter == NULL){
-		iter = new BinaryNode();
-		iter->data = data;
+		root = new BinaryNode();
+		root->data = data;
 		return SUCCESS;
 	}
 
@@ -67,6 +67,7 @@ RC BinaryTree::search(ValType data){
 			iter = iter->right;
 		}
 	}
+
 	return -1;
 }
 
