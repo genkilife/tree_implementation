@@ -25,9 +25,11 @@ RC BplusTree::create(int childSize){
 
 RC BplusTree::insert(ValType data){
 	BplusNode* iter = root;
-	BplusNode* n_iter;
+	BplusNode* n_iter = NULL;
 	std::vector<BplusNode*> visitedNodes;
 	RC status;
+
+	printf("Insert: %d\n", data);
 
 	while(iter != NULL){
 		// reach leaf
@@ -39,7 +41,9 @@ RC BplusTree::insert(ValType data){
 
 		visitedNodes.push_back(iter);
 
-		if(n_iter != NULL){
+		if(n_iter == NULL){
+			break;
+		} else{
 			iter = n_iter;
 		}
 	}

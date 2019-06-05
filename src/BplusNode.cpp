@@ -18,6 +18,9 @@ BplusNode::BplusNode(unsigned int maxSize)
 RC BplusNode::findData(ValType data, BplusNode* & childPtr){
 	childPtr = NULL;
 	unsigned int i;
+	if(datas.size()==0){
+		return -1;
+	}
 	for(i=0; i < datas.size(); i++){
 		if(datas[i] == data){
 			return SUCCESS;
@@ -27,11 +30,6 @@ RC BplusNode::findData(ValType data, BplusNode* & childPtr){
 	}
 
 	childPtr = childPtrs[i];
-	if(childPtr == NULL){
-		assert(childPtr!=NULL);
-		return -1;
-	}
-
 	return -1;
 }
 
