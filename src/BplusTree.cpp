@@ -25,13 +25,53 @@ RC BplusTree::create(int childSize){
 
 RC BplusTree::insert(ValType data){
 	BplusNode* iter = root;
+	BplusNode* n_iter;
+	std::vector<BplusNode*> visitedNodes;
+	RC status;
 
-	return -1;
+	while(iter != NULL){
+		// reach leaf
+		status = iter->findData(data, n_iter);
+		if(status == SUCCESS){
+			printf("We don't expect to insert duplicated datas!\n");
+			return -1;
+		}
+
+		visitedNodes.push_back(iter);
+
+		if(n_iter != NULL){
+			iter = n_iter;
+		}
+	}
+
+	// iter is at leaf page
+	if(iter->insertData(data) != SUCCESS){
+		return -1;
+	}
+
+	if(iter->getDatasSize() == maxChildSize){
+		// split nodes and upwards
+
+	}
+
+	return SUCCESS;
 }
 
 RC BplusTree::search(ValType data){
 	BplusNode* iter = root;
+	BplusNode* n_iter;
+	RC status;
 
+	while(iter != NULL){
+		status = iter->findData(data, n_iter);
+		if(status == SUCCESS){
+			return SUCCESS;
+		}
+		if(n_iter == NULL){
+			return -1;
+		}
+		iter = n_iter;
+	}
 	return -1;
 }
 
