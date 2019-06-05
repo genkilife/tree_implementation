@@ -24,7 +24,7 @@ RC BinaryTree::insert(ValType data){
 	if(iter == NULL){
 		iter = new BinaryNode();
 		iter->data = data;
-		return;
+		return SUCCESS;
 	}
 
 	while(iter != NULL){
@@ -38,7 +38,7 @@ RC BinaryTree::insert(ValType data){
 				return SUCCESS;
 			}
 			else{
-				return insert(iter->left, data);
+				iter = iter->left;
 			}
 		}else{
 			if(iter->right == NULL){
@@ -46,14 +46,27 @@ RC BinaryTree::insert(ValType data){
 				return SUCCESS;
 			}
 			else{
-				return insert(iter->right, data);
+				iter = iter->right;
 			}
 		}
 	}
 	return -1;
 }
 
-RC BinaryTree::search(KeyType key){
+RC BinaryTree::search(ValType data){
+	BinaryNode* iter = root;
+
+	// if it is empty tree
+	while(iter != NULL){
+		if(iter->data == val){
+			return SUCCESS;
+		}
+		if(data < iter->data){
+			iter = iter->left;
+		}else{
+			iter = iter->right;
+		}
+	}
 	return -1;
 }
 
