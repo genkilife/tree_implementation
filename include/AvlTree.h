@@ -1,15 +1,16 @@
-#ifndef _BINARY_TREE_H_
-#define _BINARY_TREE_H_
+#ifndef _AVL_TREE_H_
+#define _AVL_TREE_H_
 
 #include <iostream>
 #include <cassert>
 #include "test_util.h"
-#include "BasicTree.h"
+#include "BinaryTree.h"
 
-class BinaryTree: public BasicTree{
+class AvlTree: public BinaryTree{
 	public:
-		BinaryTree();
-		~BinaryTree();
+		AvlTree();
+		AvlTree(ValType);
+		~AvlTree();
 	// hash function
 	public:
 		RC create();
@@ -18,7 +19,7 @@ class BinaryTree: public BasicTree{
 		RC printTreeMethod();
 		bool isEmptyTree();
 		void freeTree(BinaryNode*);
-	protected:
+	private:
 		BinaryNode* root;
 		unsigned int treeSize;
 };
