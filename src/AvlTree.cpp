@@ -56,14 +56,18 @@ RC AvlTree::insert(ValType data){
 		int right_height = (cur->right == NULL) ? 0 : cur->right->height;
 
 		if((left_height-right_height)>=2){
-			rotate_right(visitedNodes, cur);
+			if(rotate_right(visitedNodes, cur) != SUCCESS){
+				return -1;
+			}
 		}
 		else if((right_height-left_height)>=2){
-			rotate_left(visitedNodes, cur);
+			if(rotate_left(visitedNodes, cur) != SUCCESS){
+				return -1;
+			}
 		}
 	}
 
-	return -1;
+	return SUCCESS;
 }
 
 RC AvlTree::printTreeMethod(){
