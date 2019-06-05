@@ -68,6 +68,10 @@ int BplusNode::getChildPtrsSize(){
 	return childPtrs.size();
 }
 
+ValType BplusNode::getData(unsigned int index){
+	return datas[index];
+}
+
 BplusNode::~BplusNode(){
 	datas.clear();
 	childPtrs.clear();
