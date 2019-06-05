@@ -12,8 +12,8 @@ class BasicTree{
 	// hash function
 	public:
 		virtual RC create();
-		virtual RC insert(KeyType, ValType);
-		virtual RC search(KeyType);
+		virtual RC insert(ValType);
+		virtual RC search(ValType);
 		virtual RC printTreeMethod();
 		virtual bool isEmptyTree();
 };
