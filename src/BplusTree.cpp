@@ -29,8 +29,6 @@ RC BplusTree::insert(ValType data){
 	std::vector<BplusNode*> visitedNodes;
 	RC status;
 
-	printf("Insert: %d\n", data);
-
 	while(iter != NULL){
 		// reach leaf
 		status = iter->findData(data, n_iter);
@@ -59,7 +57,7 @@ RC BplusTree::insert(ValType data){
 	visitedNodes.pop_back();
 
 	// split nodes and move upwards
-	while(iter->getDatasSize() == maxChildSize){
+	while(iter != NULL && iter->getDatasSize() == maxChildSize){
 		// split node and promte
 		// pick up the pivot data
 		unsigned int pivotIndex = maxChildSize/2;
@@ -85,7 +83,7 @@ RC BplusTree::insert(ValType data){
 
 			// recude left node size
 			oldRoot->resizeNode(pivotIndex);
-
+			break;
 		} else{
 			// push key into upper layer
 			BplusNode* parent = visitedNodes.back();
