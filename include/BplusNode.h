@@ -24,7 +24,7 @@ class BplusNode{
 		RC newChildPtr(unsigned int);
 		RC setChildPtr(unsigned int, BplusNode*);
 		BplusNode* getChildPtr(unsigned int);
-		RC insertData(ValType);
+		unsigned int insertData(ValType);
 
 	protected:
 		std::vector< ValType > datas;
