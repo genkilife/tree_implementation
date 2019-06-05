@@ -72,6 +72,11 @@ ValType BplusNode::getData(unsigned int index){
 	return datas[index];
 }
 
+RC BplusNode::setChildPtr(unsigned int index, BplusNode* nodePtr){
+	childPtr[index] = nodePtr;
+	return SUCCESS;
+}
+
 BplusNode::~BplusNode(){
 	datas.clear();
 	childPtrs.clear();

@@ -21,6 +21,8 @@ class BplusNode{
 
 		ValType getData(unsigned int);
 
+		RC setChildPtr(unsigned int, BplusNode*);
+
 		RC insertData(ValType);
 
 		unsigned int maxDataSize;
