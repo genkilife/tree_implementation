@@ -8,7 +8,7 @@ BplusNode::BplusNode()
 	childPtrs.clear();
 }
 
-BplusNode::BplusNode(int maxSize)
+BplusNode::BplusNode(unsigned int maxSize)
 		:maxDataSize(maxSize)
 {
 	datas.clear();
@@ -34,6 +34,31 @@ RC BplusNode::findData(ValType data, BplusNode* & childPtr){
 
 	return -1;
 }
+
+RC BplusNode::insertData(ValType data){
+	if(datas.size() == maxDataSize){
+		return -1;
+	}
+
+	if(datas.size() == 0){
+		datas.push_back(data);
+		childPtrs.push_back(NULL);
+		childPtrs.push_back(NULL);
+		return SUCCESS;
+	}
+	unsigned int i;
+	for(i=0; i<datas.size(); i++){
+		if(data < datas[i]){
+			break;
+		}
+	}
+
+	datas.insert(datas.begin()+i, data);
+	childPtrs.push_back(NULL);
+
+	return SUCCESS;
+}
+
 
 int BplusNode::getDatasSize(){
 	return datas.size();

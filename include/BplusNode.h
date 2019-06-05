@@ -8,7 +8,7 @@
 class BplusNode{
 	public:
 		BplusNode();
-		BplusNode(int maxDataSize);
+		BplusNode(unsigned int maxDataSize);
 
 		~BplusNode();
 
@@ -19,7 +19,9 @@ class BplusNode{
 		int getDatasSize();
 		int getChildPtrsSize();
 
-		const int maxDataSize;
+		RC insertData(ValType);
+
+		unsigned int maxDataSize;
 };
 
 #endif
