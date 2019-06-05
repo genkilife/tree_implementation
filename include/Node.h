@@ -9,7 +9,6 @@ class BinaryNode{
 		BinaryNode();
 		BinaryNode(ValType);
 		~BinaryNode();
-	private:
 		BinaryNode *left, *right;
 		ValType data;
 };

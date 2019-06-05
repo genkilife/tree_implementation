@@ -28,7 +28,7 @@ RC BinaryTree::insert(ValType data){
 	}
 
 	while(iter != NULL){
-		if(iter->data == val){
+		if(iter->data == data){
 			printf("Error: insert existing val\n");
 			return -1;
 		}
@@ -58,7 +58,7 @@ RC BinaryTree::search(ValType data){
 
 	// if it is empty tree
 	while(iter != NULL){
-		if(iter->data == val){
+		if(iter->data == data){
 			return SUCCESS;
 		}
 		if(data < iter->data){

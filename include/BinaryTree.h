@@ -13,8 +13,8 @@ class BinaryTree: public BasicTree{
 	// hash function
 	public:
 		RC create();
-		RC insert(KeyType, ValType);
-		RC search(KeyType);
+		RC insert(ValType);
+		RC search(ValType);
 		RC printTreeMethod();
 		bool isEmptyTree();
 		void freeTree(BinaryNode*);
