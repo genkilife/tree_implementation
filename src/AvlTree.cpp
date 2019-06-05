@@ -5,14 +5,9 @@ AvlTree::AvlTree()
 {
 }
 
-AvlTree::AvlTree(ValType data)
-		:BinaryTree(data)
-{
-}
-
 AvlTree::~AvlTree()
-		:BinaryTree()
 {
+	this->~BinaryTree();
 }
 
 RC AvlTree::insert(ValType data){

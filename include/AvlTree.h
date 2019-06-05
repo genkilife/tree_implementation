@@ -9,18 +9,10 @@
 class AvlTree: public BinaryTree{
 	public:
 		AvlTree();
-		AvlTree(ValType);
 		~AvlTree();
 	// hash function
 	public:
-		RC create();
 		RC insert(ValType);
-		RC search(ValType);
 		RC printTreeMethod();
-		bool isEmptyTree();
-		void freeTree(BinaryNode*);
-	private:
-		BinaryNode* root;
-		unsigned int treeSize;
 };
 #endif
