@@ -4,7 +4,7 @@
 #include <iostream>
 #include "test_util.h"
 
-class BinaryNode(){
+class BinaryNode{
 	public:
 		BinaryNode();
 		BinaryNode(ValType);
