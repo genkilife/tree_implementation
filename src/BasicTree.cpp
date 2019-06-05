@@ -10,7 +10,7 @@ RC BasicTree::create(){
 	return SUCCESS;
 }
 
-RC BasicTree::insert(KeyType key, ValType val){
+RC BasicTree::insert(ValType val){
 	return SUCCESS;
 }
 
