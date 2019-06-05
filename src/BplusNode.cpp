@@ -54,7 +54,7 @@ RC BplusNode::insertData(ValType data){
 	}
 
 	datas.insert(datas.begin()+i, data);
-	childPtrs.push_back(NULL);
+	childPtrs.insert(childPTrs.begin()+i, NULL);
 
 	return SUCCESS;
 }
