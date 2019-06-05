@@ -9,13 +9,13 @@ Then, delete keys from the set.
 #include <chrono>
 #include <fstream>
 #include "test_util.h"
-#include "BinaryTree.h"
+#include "AvlTree.h"
 
 using namespace std;
 
 int main(){
-	BinaryTree* btPtr = new BinaryTree();
-	btPtr->printTreeMethod();
+	AvlTree* avlPtr = new AvlTree();
+	avlPtr->printTreeMethod();
 
 	/*
 		Generate distinct keys.
@@ -28,7 +28,7 @@ int main(){
 	/*
 		Initialize hash and insert keys
 	*/
-	btPtr->create();
+	avlPtr->create();
 
 	/*
 		Begin meassuring performance
@@ -41,7 +41,7 @@ int main(){
 
 
 	for(unsigned int idx=0; idx < valSize; idx++){
-		if(btPtr->insert(vals[idx]) != SUCCESS){
+		if(avlPtr->insert(vals[idx]) != SUCCESS){
 			assert(false);
 		}
 		if((idx % SAMPLE_PERIOD) == 0){
@@ -51,7 +51,7 @@ int main(){
 			if(idx > 0){
 				start = chrono::high_resolution_clock::now();
 				for(unsigned iidx=idx-SAMPLE_PERIOD; iidx < idx; iidx++){
-					if(btPtr->search(vals[iidx]) != SUCCESS){
+					if(avlPtr->search(vals[iidx]) != SUCCESS){
 						assert(false);
 					}
 				}
@@ -66,20 +66,20 @@ int main(){
 		Dump into result file.
 	*/
 	fstream fs;
-	fs.open("result/binary_tree_uniform_insert_timestamp.txt", fstream::out);
+	fs.open("result/avl_tree_uniform_insert_timestamp.txt", fstream::out);
 	for(unsigned int idx=0; idx < valSize/SAMPLE_PERIOD; idx++){
 		fs << idx*SAMPLE_PERIOD << " " << msecInsert[idx] << endl;
 	}
 	fs.close();
-	cout<<"Finish binary tree insertion "<<valSize <<" elements"<<endl;
+	cout<<"Finish avl tree insertion "<<valSize <<" elements"<<endl;
 
-	fs.open("result/binary_tree_uniform_search_timestamp.txt", fstream::out);
+	fs.open("result/avl_tree_uniform_search_timestamp.txt", fstream::out);
 	for(unsigned int idx=0; idx < valSize/SAMPLE_PERIOD; idx++){
 		fs << idx*SAMPLE_PERIOD << " " << msecSearch[idx] << endl;
 	}
 	fs.close();
 
-	cout<<"Finish binary tree insertion "<<valSize <<" elements"<<endl;
+	cout<<"Finish avl tree insertion "<<valSize <<" elements"<<endl;
 	vector<ValType> shuffledKeys_v(vals, vals+valSize);
 	random_shuffle(shuffledKeys_v.begin(), shuffledKeys_v.end());
 
