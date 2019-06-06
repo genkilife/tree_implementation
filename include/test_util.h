@@ -14,6 +14,6 @@ typedef unsigned int ValType;
 #define SAMPLE_PERIOD 300
 
 RC genDistinctKeys(KeyType*, unsigned int);
-RC genCollideKeys(KeyType*, unsigned int);
+RC genSkewedKeys(KeyType*, unsigned int);
 
 #endif
