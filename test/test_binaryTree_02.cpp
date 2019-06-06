@@ -20,7 +20,7 @@ int main(){
 	/*
 		Generate distinct keys.
 	*/
-	unsigned int valSize = MODPRIME * 0.8;
+	unsigned int valSize = MAXNUMITEM;
 	ValType* vals = new ValType[valSize];
 
 	genDistinctKeys(vals, valSize);
@@ -49,14 +49,26 @@ int main(){
 			auto elapsed = chrono::high_resolution_clock::now() - start;
 			msecInsert[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
 			if(idx > 0){
+				// shuffle the keys to create random key fetcj
+				vector<ValType> shuffledKeys_v(vals, vals+valSize);
+				random_shuffle(shuffledKeys_v.begin(), shuffledKeys_v.end());
+
+				ValType* shuffledKeys = new ValType[valSize];
+				for(unsigned int idx=0; idx < valSize; idx++){
+					shuffledKeys[idx] = shuffledKeys_v[idx];
+				}
+
 				start = chrono::high_resolution_clock::now();
-				for(unsigned iidx=idx-SAMPLE_PERIOD; iidx < idx; iidx++){
+				for(unsigned iidx=0 ; iidx < SAMPLE_PERIOD; iidx++){
 					if(btPtr->search(vals[iidx]) != SUCCESS){
 						assert(false);
 					}
 				}
 				elapsed = chrono::high_resolution_clock::now() - start;
 				msecSearch[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
+
+				delete [] shuffledKeys;
+				shuffledKeys_v.clear();
 
 				start = chrono::high_resolution_clock::now();
 			}
@@ -80,17 +92,6 @@ int main(){
 	fs.close();
 
 	cout<<"Finish binary tree insertion "<<valSize <<" elements"<<endl;
-	vector<ValType> shuffledKeys_v(vals, vals+valSize);
-	random_shuffle(shuffledKeys_v.begin(), shuffledKeys_v.end());
-
-	ValType* shuffledKeys = new ValType[valSize];
-	for(unsigned int idx=0; idx < valSize; idx++){
-		shuffledKeys[idx] = shuffledKeys_v[idx];
-	}
 	
-	start = chrono::high_resolution_clock::now();
-
-	delete [] vals;
-	delete [] shuffledKeys;
 	return 0;
 }
