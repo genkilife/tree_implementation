@@ -92,6 +92,5 @@ int main(){
 	fs.close();
 
 	cout<<"Finish binary tree insertion "<<valSize <<" elements"<<endl;
-	
 	return 0;
 }
