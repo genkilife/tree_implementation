@@ -6,7 +6,7 @@ typedef int RC;
 typedef unsigned int KeyType;
 typedef unsigned int ValType;
 
-#define MAXNUMITEM 131072
+#define MAXNUMITEM 65536
 
 // for non-return usage
 #define SUCCESS 0
