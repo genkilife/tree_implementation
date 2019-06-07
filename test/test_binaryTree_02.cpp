@@ -50,12 +50,12 @@ int main(){
 			msecInsert[idx/SAMPLE_PERIOD] = chrono::duration_cast<chrono::microseconds>(elapsed).count();
 			if(idx > 0){
 				// shuffle the keys to create random key fetcj
-				vector<ValType> shuffledKeys_v(vals, vals+valSize);
+				vector<ValType> shuffledKeys_v(vals, vals+idx+1);
 				random_shuffle(shuffledKeys_v.begin(), shuffledKeys_v.end());
 
 				ValType* shuffledKeys = new ValType[valSize];
-				for(unsigned int idx=0; idx < valSize; idx++){
-					shuffledKeys[idx] = shuffledKeys_v[idx];
+				for(unsigned int iidx=0; iidx < idx+1; iidx++){
+					shuffledKeys[iidx] = shuffledKeys_v[iidx];
 				}
 
 				start = chrono::high_resolution_clock::now();
