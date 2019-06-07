@@ -1,9 +1,14 @@
 include makefile.inc
 
-all: bin/test_basicTree_01 
+all: bin/test_binaryTree_02 bin/test_binaryTree_03 bin/test_avlTree_02 bin/test_avlTree_03 bin/test_bplusTree_02 bin/test_bplusTree_03
 
 run:
-	./bin/test_basicTree_01
+	./bin/test_binaryTree_02
+	./bin/test_binaryTree_03
+	./bin/test_avlTree_02
+	./bin/test_avlTree_03
+	./bin/test_bplusTree_02
+	./bin/test_bplusTree_03
 
 # c file dependencies
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
