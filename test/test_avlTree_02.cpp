@@ -60,7 +60,7 @@ int main(){
 
 				start = chrono::high_resolution_clock::now();
 				for(unsigned iidx=0 ; iidx < SAMPLE_PERIOD; iidx++){
-					if(btPtr->search(shuffledKeys[iidx]) != SUCCESS){
+					if(avlPtr->search(shuffledKeys[iidx]) != SUCCESS){
 						assert(false);
 					}
 				}
