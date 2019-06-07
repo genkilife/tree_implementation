@@ -11,7 +11,7 @@ typedef unsigned int ValType;
 // for non-return usage
 #define SUCCESS 0
 
-#define SAMPLE_PERIOD 300
+#define SAMPLE_PERIOD 500
 
 RC genDistinctKeys(KeyType*, unsigned int);
 RC genSkewedKeys(KeyType*, unsigned int);
